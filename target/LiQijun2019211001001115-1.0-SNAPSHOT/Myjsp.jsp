@@ -12,7 +12,7 @@
 </head>
 <body>
 <a href="http://www.ecjtu.jx.cn/">go to ecjtu</a><!--what is method get or post -->
-<form method="post">
+<form>
     Name:<input type="text" name="name"><br/>
     ID:<input type="text" name="ID"><br/>
     <input type="submit" value="Send data to server"/>
