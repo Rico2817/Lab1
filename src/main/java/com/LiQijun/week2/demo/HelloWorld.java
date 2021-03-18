@@ -13,7 +13,7 @@ public class HelloWorld extends HttpServlet {
         //when client request method is GET-here-inside doGet()
         //we want to send hello to client
         PrintWriter writer=response.getWriter();
-        writer.println("Hello Client !!!");//hello
+        writer.println("Hello Client !!!");//hello.
     }
     public void doPost(HttpServletRequest request, HttpServletResponse response){
         //when client request method is GET-here-inside doGet()

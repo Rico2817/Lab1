@@ -11,8 +11,8 @@
     <title>go to ecjtu</title>
 </head>
 <body>
-<a href="http://www.ecjtu.jx.cn/">go to ecjtu</a><!--what is method get or post -->
-<form>
+<a href="http://www.ecjtu.jx.cn/">go to ecjtu</a><!--what is method get or post. -->
+<form method="post">
     Name:<input type="text" name="name"><br/>
     ID:<input type="text" name="ID"><br/>
     <input type="submit" value="Send data to server"/>
