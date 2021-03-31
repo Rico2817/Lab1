@@ -17,6 +17,28 @@
         <servlet-name>RegisterServlet</servlet-name>
         <servlet-class>com.LiQijun.week3.demo.RegisterServlet</servlet-class>
     </servlet>
+    <!--<servlet>
+        <servlet-name>JDBC_DemoServlet</servlet-name>
+        <servlet-class>com.LiQijun.week4.demo.JDBC_DemoServlet</servlet-class>
+        <init-param>
+            <param-name>driver</param-name>
+            <param-value>com.microsoft.sqlserver.jdbc.SQLServerDriver</param-value>
+        </init-param>
+        <init-param>
+            <param-name>url</param-name>
+            <param-value>jdbc:sqlserver://127.0.0.1:1433;databaseName=userdb;</param-value>
+        </init-param>
+        <init-param>
+            <param-name>user</param-name>
+            <param-value>sa</param-value>
+        </init-param>
+        <init-param>
+            <param-name>password</param-name>
+            <param-value>admin123456</param-value>
+        </init-param>
+        <load-on-startup>1</load-on-startup>
+
+    </servlet>-->
     <servlet-mapping>
         <servlet-name>RegisterServlet</servlet-name>
         <url-pattern>/register</url-pattern>
@@ -30,4 +52,8 @@
         <url-pattern>/life</url-pattern>
         <!--/life==LifeCycleServlet==com.LiQijun.week3.demo.LifeCycleServlet-->
     </servlet-mapping>
+    <!--<servlet-mapping>
+        <servlet-name>JDBC_DemoServlet</servlet-name>
+        <url-pattern>/jdbc</url-pattern>
+    </servlet-mapping>-->
 </web-app>
