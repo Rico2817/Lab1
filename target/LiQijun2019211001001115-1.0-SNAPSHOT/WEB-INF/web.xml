@@ -9,7 +9,7 @@
         <servlet-class>com.LiQijun.week2.demo.HelloWorld</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>ConfigDemoServlet</servlet-name>
+        <servlet-name>ConfigServlet</servlet-name>
         <servlet-class>com.LiQijun.week4.demo.ConfigServlet</servlet-class>
         <init-param>
             <param-name>name</param-name>
@@ -25,10 +25,15 @@
         <servlet-class>com.LiQijun.week3.demo.LifeCycleServlet</servlet-class>
     </servlet>
     <!--automatic code-->
+
     <servlet>
-        <servlet-name>RegisterServlet</servlet-name>
-        <servlet-class>com.LiQijun.week3.demo.RegisterServlet</servlet-class>
+        <servlet-name>LoginServlet</servlet-name>
+        <servlet-class>com.LiQijun.week5.demo.LoginServlet</servlet-class>
     </servlet>
+    <servlet-mapping>
+        <servlet-name>LoginServlet</servlet-name>
+        <url-pattern>/login</url-pattern>
+    </servlet-mapping>
     <!--<servlet>
         <servlet-name>JDBC_DemoServlet</servlet-name>
         <servlet-class>com.LiQijun.week4.demo.JDBC_DemoServlet</servlet-class>
@@ -52,12 +57,8 @@
 
     </servlet>-->
     <servlet-mapping>
-        <servlet-name>ConfigDemoServlet</servlet-name>
+        <servlet-name>ConfigServlet</servlet-name>
         <url-pattern>/config</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>RegisterServlet</servlet-name>
-        <url-pattern>/register</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>anyName</servlet-name>

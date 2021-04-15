@@ -25,10 +25,7 @@
         <servlet-class>com.LiQijun.week3.demo.LifeCycleServlet</servlet-class>
     </servlet>
     <!--automatic code-->
-    <servlet>
-        <servlet-name>RegisterServlet</servlet-name>
-        <servlet-class>com.LiQijun.week3.demo.RegisterServlet</servlet-class>
-    </servlet>
+
     <servlet>
         <servlet-name>LoginServlet</servlet-name>
         <servlet-class>com.LiQijun.week5.demo.LoginServlet</servlet-class>
@@ -62,10 +59,6 @@
     <servlet-mapping>
         <servlet-name>ConfigServlet</servlet-name>
         <url-pattern>/config</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>RegisterServlet</servlet-name>
-        <url-pattern>/register</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>anyName</servlet-name>

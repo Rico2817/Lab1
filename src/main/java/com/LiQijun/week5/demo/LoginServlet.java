@@ -17,27 +17,7 @@ public class LoginServlet extends HttpServlet {
     @Override
     public void init() throws ServletException {
         super.init();
-
-        ServletConfig config=getServletConfig();
-        String driver ="com.microsoft.sqlserver.jdbc.SQLServerDriver";       //数据库驱动
-        String url ="jdbc:sqlserver://127.0.0.1:1433;databaseName=userdb;";
-        String user="sa";
-        String password="admin123456";                          //数据库 URL
-        try{
-            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-            System.out.println("SqlServer数据库驱动连接成功！");
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-        try{
-            con= DriverManager.getConnection(url,user,password);
-            System.out.println("SqlServer数据库连接成功！"+con);
-        }catch (Exception e){
-            String[] infos = { "未能成功连接数据库！", "请确认本软件是否已经运行！" };
-            JOptionPane.showMessageDialog(null, infos);
-            System.exit(0);
-            e.printStackTrace();
-        }
+        con=(Connection) getServletContext().getAttribute("con");
     }
 
     @Override
@@ -56,14 +36,24 @@ public class LoginServlet extends HttpServlet {
         //find
         try {
             ResultSet rs=con.createStatement().executeQuery("select * from usertable where username ="+username+"and password ="+password+";");
-            while (rs.next()){
-                u = rs.getString(1);
-                p = rs.getString(1);
+            if (rs.next()){
+                //u = rs.getString("username");
+               // p = rs.getString("password");
+                request.setAttribute("id",rs.getInt("id"));
+                request.setAttribute("username",rs.getString("username"));
+                request.setAttribute("password",rs.getString("password"));
+                request.setAttribute("email",rs.getString("email"));
+                request.setAttribute("gender",rs.getString("gender"));
+                request.setAttribute("birthDate",rs.getString("birthDate"));
+                request.getRequestDispatcher("userInfo.jsp").forward(request,response);
+            }else{
+                request.setAttribute("message","username or password error!");
+                request.getRequestDispatcher("login.jsp").forward(request,response);
             }
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
-        if(u==username&&p==password) print.println("登入成功，welcome,"+username);
-        else print.println("登入失败,pls try again!!");
+       // if(u==username&&p==password) print.println("登入成功，welcome,"+username);
+       // else print.println("登入失败,pls try again!!");
     }
 }

@@ -2,6 +2,19 @@
 <%@include file="header.jsp"%>
 <h1><%= "Welcome to Myjsp" %>
 </h1>
+<form method="get" action="search" target="_blank">
+    <label>
+        Search<input name="text" value="text" size="30"/>
+    </label>
+    <label>
+        <select name="search">
+            <option value="baidu">BaiDu 百度</option>
+            <option value="bing">Bing 必应</option>
+            <option value="google">Google 谷歌</option>
+        </select>
+    </label>
+    <input type="submit" value="Search"/>
+</form>
 <br/>
 <a href="hello-servlet">Hello Servlet</a>
 <br/>
