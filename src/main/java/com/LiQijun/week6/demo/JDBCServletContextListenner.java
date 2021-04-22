@@ -13,12 +13,12 @@ public class JDBCServletContextListenner implements ServletContextListener {
     @Override
     public void contextInitialized(ServletContextEvent sce) {
         ServletContext context= sce.getServletContext();
-
-        String url ="jdbc:sqlserver://127.0.0.1:1433;databaseName=userdb;";
-        String user="sa";
-        String password="admin123456";                          //数据库 URL
+        String driver=context.getInitParameter("driver");
+        String url =context.getInitParameter("url");
+        String user=context.getInitParameter("username");
+        String password=context.getInitParameter("password");                          //数据库 URL
         try{
-            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+            Class.forName(driver);
             System.out.println("SqlServer数据库驱动连接成功！");
         }catch (Exception e){
             e.printStackTrace();
@@ -27,7 +27,8 @@ public class JDBCServletContextListenner implements ServletContextListener {
             Connection con= DriverManager.getConnection(url,user,password);
             System.out.println("SqlServer数据库连接成功！"+con);
             System.out.println("i am in contextInitialized");
-            context.setAttribute("con",con);
+
+            context.setAttribute("con",con);//set Attribute
         }catch (Exception e){
             String[] infos = { "未能成功连接数据库！", "请确认本软件是否已经运行！" };
             JOptionPane.showMessageDialog(null, infos);

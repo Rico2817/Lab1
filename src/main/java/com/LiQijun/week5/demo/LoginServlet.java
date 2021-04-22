@@ -1,5 +1,8 @@
 package com.LiQijun.week5.demo;
 
+import com.LiQijun.dao.UserDao;
+import com.LiQijun.model.User;
+
 import javax.servlet.*;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
@@ -22,7 +25,7 @@ public class LoginServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+        request.getRequestDispatcher("WEB-INF/views/login.jsp").forward(request,response);
     }
 
     @Override
@@ -30,6 +33,23 @@ public class LoginServlet extends HttpServlet {
         response.setContentType("text/html");
         String username=request.getParameter("username");
         String password=request.getParameter("password");
+
+        UserDao userDao=new UserDao();
+        try {
+            User user= userDao.findByUsernamePassword(con,username,password);//this method use for login;
+            if(user != null){
+                //valid
+                request.setAttribute("user",user);//get user info in jsp
+                request.getRequestDispatcher("WEB-INF/views/userInfo.jsp").forward(request,response);
+            }else{
+                //invalid
+                request.setAttribute("message","Username or password was wrong! pls try again!");
+                request.getRequestDispatcher("WEB-INF/views/login.jsp").forward(request,response);
+            }
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
         String u = new String();
         String p = new String();
         PrintWriter print=response.getWriter();
