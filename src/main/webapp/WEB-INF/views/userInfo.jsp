@@ -1,4 +1,4 @@
-<%--
+<%@ page import="com.LiQijun.model.User" %><%--
   Created by IntelliJ IDEA.
   User: Administrator
   Date: 2021/4/15
@@ -10,11 +10,14 @@
 <h1>
     User Info
 </h1>
+<%
+    User user= (User)request.getAttribute("user");
+%>
 <table>
-    <tr><td>username:</td><td><%=request.getAttribute("username")%></td></tr>
-    <tr><td>password:</td><td><%=request.getAttribute("password")%></td></tr>
-    <tr><td>email:</td><td><%=request.getAttribute("email")%></td></tr>
-    <tr><td>gender:</td><td><%=request.getAttribute("gender")%></td></tr>
-    <tr><td>birthDate:</td><td><%=request.getAttribute("birthDate")%></td></tr>
+    <tr><td>username:</td><td><%=user.getUsername()%></td></tr>
+    <tr><td>password:</td><td><%=user.getPassword()%></td></tr>
+    <tr><td>email:</td><td><%=user.getEmail()%></td></tr>
+    <tr><td>gender:</td><td><%=user.getGender()%></td></tr>
+    <tr><td>birthDate:</td><td><%=user.getBirthDate()%></td></tr>
 </table>
 <%@include file="footer.jsp"%>
