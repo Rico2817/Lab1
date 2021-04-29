@@ -6,6 +6,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -29,18 +30,20 @@ public class UserDao implements IUserDao {
     @Override
     public int deleteUser(Connection con, User user) throws SQLException {
         // delete ... where id=?
+        int flag=0;
         String sql="delete from usertable where id=?";
         PreparedStatement ps=null;
         ps=con.prepareStatement(sql);
         ps.setInt(1,user.getId());
-        ps.executeUpdate();
+        flag=ps.executeUpdate();
         ps.close();
-        return 0;
+        return flag;
     }
 
     @Override
     public int updateUser(Connection con, User user) throws SQLException {
         //update ... where id=?;
+        int flag=0;
         String sql="update usertable set username='"+user.getUsername()
                 +"',password='"+user.getPassword()
                 +"',email='"+user.getEmail()
@@ -48,9 +51,9 @@ public class UserDao implements IUserDao {
                 +"',birthDate='"+user.getBirthDate()
                 +"'where cid='"+user.getId()+"'";
         PreparedStatement ps= con.prepareStatement(sql);
-        ps.executeUpdate();
+        flag=ps.executeUpdate();
         ps.close();
-        return 0;
+        return flag;
     }
 
     @Override
@@ -102,18 +105,19 @@ public class UserDao implements IUserDao {
         String sql="select * from usertable where username='"+username+"'";
         PreparedStatement ps= con.prepareStatement(sql);
         ResultSet rs=ps.executeQuery();
-        User user=null;
+        List<User> userList=new ArrayList<User>();
+        User user=new User();
         if(rs.next()){
-            user = new User();
             user.setId(rs.getInt("id"));
             user.setUsername(rs.getString("username"));
             user.setPassword(rs.getString("password"));
             user.setEmail(rs.getString("email"));
             user.setGender(rs.getString("gender"));
             user.setBirthDate(rs.getDate("birthDate"));
+            userList.add(user);
         }
         ps.close();
-        return null;
+        return userList;
     }
 
     @Override
@@ -122,18 +126,19 @@ public class UserDao implements IUserDao {
         String sql="select * from usertable where password='"+password+"'";
         PreparedStatement ps= con.prepareStatement(sql);
         ResultSet rs=ps.executeQuery();
-        User user=null;
+        List<User> userList=new ArrayList<User>();
+        User user=new User();
         if(rs.next()){
-            user = new User();
             user.setId(rs.getInt("id"));
             user.setUsername(rs.getString("username"));
             user.setPassword(rs.getString("password"));
             user.setEmail(rs.getString("email"));
             user.setGender(rs.getString("gender"));
             user.setBirthDate(rs.getDate("birthDate"));
+            userList.add(user);
         }
         ps.close();
-        return null;
+        return userList;
     }
 
     @Override
@@ -142,18 +147,19 @@ public class UserDao implements IUserDao {
         String sql="select * from usertable where email='"+email+"'";
         PreparedStatement ps= con.prepareStatement(sql);
         ResultSet rs=ps.executeQuery();
-        User user=null;
+        List<User> userList=new ArrayList<User>();
+        User user=new User();
         if(rs.next()){
-            user = new User();
             user.setId(rs.getInt("id"));
             user.setUsername(rs.getString("username"));
             user.setPassword(rs.getString("password"));
             user.setEmail(rs.getString("email"));
             user.setGender(rs.getString("gender"));
             user.setBirthDate(rs.getDate("birthDate"));
+            userList.add(user);
         }
         ps.close();
-        return null;
+        return userList;
     }
 
     @Override
@@ -162,18 +168,19 @@ public class UserDao implements IUserDao {
         String sql="select * from usertable where gender='"+gender+"'";
         PreparedStatement ps= con.prepareStatement(sql);
         ResultSet rs=ps.executeQuery();
-        User user=null;
+        List<User> userList=new ArrayList<User>();
+        User user=new User();
         if(rs.next()){
-            user = new User();
             user.setId(rs.getInt("id"));
             user.setUsername(rs.getString("username"));
             user.setPassword(rs.getString("password"));
             user.setEmail(rs.getString("email"));
             user.setGender(rs.getString("gender"));
             user.setBirthDate(rs.getDate("birthDate"));
+            userList.add(user);
         }
         ps.close();
-        return null;
+        return userList;
     }
 
     @Override
@@ -182,18 +189,19 @@ public class UserDao implements IUserDao {
         String sql="select * from usertable where birthDate='"+birthDate+"'";
         PreparedStatement ps= con.prepareStatement(sql);
         ResultSet rs=ps.executeQuery();
-        User user=null;
+        List<User> userList=new ArrayList<User>();
+        User user=new User();
         if(rs.next()){
-            user = new User();
             user.setId(rs.getInt("id"));
             user.setUsername(rs.getString("username"));
             user.setPassword(rs.getString("password"));
             user.setEmail(rs.getString("email"));
             user.setGender(rs.getString("gender"));
             user.setBirthDate(rs.getDate("birthDate"));
+            userList.add(user);
         }
         ps.close();
-        return null;
+        return userList;
     }
 
     @Override
@@ -202,17 +210,18 @@ public class UserDao implements IUserDao {
         String sql="select * from usertable";
         PreparedStatement ps= con.prepareStatement(sql);
         ResultSet rs=ps.executeQuery();
-        User user=null;
+        List<User> userList=new ArrayList<User>();
+        User user=new User();
         if(rs.next()){
-            user = new User();
             user.setId(rs.getInt("id"));
             user.setUsername(rs.getString("username"));
             user.setPassword(rs.getString("password"));
             user.setEmail(rs.getString("email"));
             user.setGender(rs.getString("gender"));
             user.setBirthDate(rs.getDate("birthDate"));
+            userList.add(user);
         }
         ps.close();
-        return null;
+        return userList;
     }
 }
