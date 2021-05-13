@@ -94,7 +94,7 @@ public class LoginServlet extends HttpServlet {
         PrintWriter print=response.getWriter();
         //find
         try {
-            ResultSet rs=con.createStatement().executeQuery("select * from usertable where username ="+username+"and password ="+password+";");
+            ResultSet rs=con.createStatement().executeQuery("select * from usertable where username ='"+username+"'and password ='"+password+"';");
             if (rs.next()){
                 //u = rs.getString("username");
                // p = rs.getString("password");

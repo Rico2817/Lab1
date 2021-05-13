@@ -22,6 +22,7 @@
 				    	<form id="main-contact-form" class="contact-form row" name="contact-form" method="post" enctype="multipart/form-data" action="<%=basePath %>admin/addProduct">
 				            <div class="form-group col-md-6">
 				                <input type="text" name="productName" class="form-control" required="required" placeholder="Product Name">
+								<!--request.getParameter("name")-->
 				            </div>
 				            <div class="form-group col-md-6">
 				                <input type="text" name="price" class="form-control" required="required" placeholder="Price">
@@ -30,9 +31,15 @@
 				               	<select name="categoryId">
 										<option >-- Category --</option>
 											<!-- loop_start -->
-											
-										<option value=""></option>
-										
+									<!--later we will make it dynamic -->
+									<option value="1">FASHION</option>
+									<option value="2">HOUSEHOLD</option>
+									<option value="3">INTERIORS</option>
+									<option value="4">CLOTHING</option>
+									<option value="5">BAGS</option>
+									<option value="6">SHOES</option>
+									<option value="7">BOOKS</option>
+									<option value="8">OTHER</option>
 										<!-- loop_end -->
 										
 										</select>
