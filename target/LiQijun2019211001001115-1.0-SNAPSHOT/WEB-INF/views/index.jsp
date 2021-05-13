@@ -1,34 +1,68 @@
-<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+
 <%@include file="header.jsp"%>
-<h1><%= "Welcome to Myjsp" %>
-</h1>
-<form method="get" action="search" target="_blank">
-    <label>
-        Search<input name="text" value="text" size="30"/>
-    </label>
-    <label>
-        <select name="search">
-            <option value="baidu">BaiDu 百度</option>
-            <option value="bing">Bing 必应</option>
-            <option value="google">Google 谷歌</option>
-        </select>
-    </label>
-    <input type="submit" value="Search"/>
-</form>
-<br/>
-<a href="hello-servlet">Hello Servlet</a>
-<br/>
-<a href="hello">Student Info Servlet-week2</a>
-<br/>
-<a href="hello-servlet">Life Cycle Servlet-week3</a>
-<br/>
-<a href="register.jsp">Register -getParameter-week4</a>
-<br/>
-<a href="config">Config Parameter -week4</a>
-<br/>
-<a href="register.jsp">Register JDBC-week4</a>
-<br/>
-<a href="index.jsp">include -week5</a>
-<br/>
-<a href="login.jsp">login-week5</a>
+	<section id="slider"><!--slider-->
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-12">
+					<div id="slider-carousel" class="carousel slide" data-ride="carousel">
+						<ol class="carousel-indicators">
+							<li data-target="#slider-carousel" data-slide-to="0" class="active"></li>
+							<li data-target="#slider-carousel" data-slide-to="1"></li>
+							<li data-target="#slider-carousel" data-slide-to="2"></li>
+						</ol>
+						
+						<div class="carousel-inner">
+							<div class="item active">
+								<div class="col-sm-6">
+									<h1><span>E</span>-SHOPPER</h1>
+									<h2>My E-Commerce Website</h2>
+									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
+									<button type="button" class="btn btn-default get">Get it now</button>
+								</div>
+								<div class="col-sm-6">
+									<img src="<%=basePath%>images/home/girl1.jpg" class="girl img-responsive" alt="" />
+									<img src="<%=basePath%>images/home/pricing.png"  class="pricing" alt="" />
+								</div>
+							</div>
+							<div class="item">
+								<div class="col-sm-6">
+									<h1><span>E</span>-SHOPPER</h1>
+									<h2>100% Responsive Design</h2>
+									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
+									<button type="button" class="btn btn-default get">Get it now</button>
+								</div>
+								<div class="col-sm-6">
+									<img src="<%=basePath%>images/home/girl2.jpg" class="girl img-responsive" alt="" />
+									<img src="<%=basePath%>images/home/pricing.png"  class="pricing" alt="" />
+								</div>
+							</div>
+							
+							<div class="item">
+								<div class="col-sm-6">
+									<h1><span>E</span>-SHOPPER</h1>
+									<h2>My Ecommerce Website</h2>
+									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
+									<button type="button" class="btn btn-default get">Get it now</button>
+								</div>
+								<div class="col-sm-6">
+									<img src="<%=basePath%>images/home/girl3.jpg" class="girl img-responsive" alt="" />
+									<img src="<%=basePath%>images/home/pricing.png" class="pricing" alt="" />
+								</div>
+							</div>
+							
+						</div>
+						
+						<a href="#slider-carousel" class="left control-carousel hidden-xs" data-slide="prev">
+							<i class="fa fa-angle-left"></i>
+						</a>
+						<a href="#slider-carousel" class="right control-carousel hidden-xs" data-slide="next">
+							<i class="fa fa-angle-right"></i>
+						</a>
+					</div>
+					
+				</div>
+			</div>
+		</div>
+	</section><!--/slider-->
 <%@include file="footer.jsp"%>
+
