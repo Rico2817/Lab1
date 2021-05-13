@@ -79,7 +79,7 @@ public class RegisterServlet extends HttpServlet {
             request.getRequestDispatcher("userList.jsp").forward(request,response);
             System.out.println("I am in RegisterServlet doPost() after forward()");*/
             //week -9
-            response.sendRedirect("login.jsp");
+            response.sendRedirect("login");
         }catch (SQLException e){
             e.printStackTrace();
         }
