@@ -1,6 +1,7 @@
 package com.LiQijun.controller;
 
 import com.LiQijun.dao.ProductDao;
+import com.LiQijun.model.Category;
 import com.LiQijun.model.Product;
 
 import javax.servlet.*;
@@ -11,10 +12,9 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.List;
 
-@WebServlet(name = "ProductListServlet", value = "/admin/productList")
-public class ProductListServlet extends HttpServlet {
+@WebServlet(name = "ProductDetailsServlet", value = "/productDetails")
+public class ProductDetailsServlet extends HttpServlet {
     Connection con=null;
-
     @Override
     public void init() throws ServletException {
         con=(Connection) getServletContext().getAttribute("con");
@@ -22,17 +22,24 @@ public class ProductListServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        Category category=new Category();
+        int id=request.getParameter("id")!=null?Integer.parseInt(request.getParameter("id")):0;
         ProductDao productDao=new ProductDao();
-        List<Product> productList= null;
+        if(id==0){
+            return;//error
+        }
+        List<Category> categoryList= null;
         try {
-            productList = productDao.findAll(con);
+            categoryList = category.findAllCategory(con);
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
-        request.setAttribute("productList",productList);
-        String path="../WEB-INF/views/admin/productList.jsp";
+        request.setAttribute("categoryList",categoryList);
+        Product product=productDao.findById(id,con);
+        request.setAttribute("p",product);
+        String path="/WEB-INF/views/productDetails.jsp";
         request.getRequestDispatcher(path).forward(request,response);
-
+        //end doGet
     }
 
     @Override

@@ -1,20 +1,18 @@
 package com.LiQijun.controller;
 
 import com.LiQijun.dao.ProductDao;
-import com.LiQijun.model.Product;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
+import java.io.OutputStream;
 import java.sql.Connection;
 import java.sql.SQLException;
-import java.util.List;
 
-@WebServlet(name = "ProductListServlet", value = "/admin/productList")
-public class ProductListServlet extends HttpServlet {
+@WebServlet(name = "GetImgServlet", value = "/getImg")
+public class GetImgServlet extends HttpServlet {
     Connection con=null;
-
     @Override
     public void init() throws ServletException {
         con=(Connection) getServletContext().getAttribute("con");
@@ -22,16 +20,25 @@ public class ProductListServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        ProductDao productDao=new ProductDao();
-        List<Product> productList= null;
+        response.setContentType("text/html");
+        ProductDao dao=new ProductDao();
+        int id=0;
+        if (request.getParameter("id") !=null) {
+            id=Integer.parseInt(request.getParameter("id"));
+        }
+        byte[] imgByte=new byte[0];
         try {
-            productList = productDao.findAll(con);
+            imgByte=dao.getPictureById(id,con);
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
-        request.setAttribute("productList",productList);
-        String path="../WEB-INF/views/admin/productList.jsp";
-        request.getRequestDispatcher(path).forward(request,response);
+        if(imgByte!=null){
+            response.setContentType("image/gif");
+            OutputStream os=response.getOutputStream();
+            os.write(imgByte);
+            os.flush();
+            //os.close;
+        }//end doGet
 
     }
 

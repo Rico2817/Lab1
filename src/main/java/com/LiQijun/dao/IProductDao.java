@@ -10,20 +10,20 @@ import java.util.List;
 
 
 public interface IProductDao {
-	/**
-	 * Insert a product
-	 * @return int
-	 */
+/**
+ * Insert a product
+ * @return int
+ */
 	public int save(Product product, Connection con) throws SQLException;
-	/**
-	 * Delete a product by productId
-	 * @return int
-	 */
+/**
+ * Delete a product by productId
+ * @return int
+ */
 	public int delete(Integer productId, Connection con) throws SQLException;
-	/**
-	 *	Update a product by productId
-	 * @return int
-	 */
+/**
+ *	Update a product by productId
+ *  @return int
+ */
 	public int update(Product instance, Connection con) throws SQLException;
 	/**
 	 *	Select a product by productId

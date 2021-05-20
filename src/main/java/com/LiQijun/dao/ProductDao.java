@@ -4,10 +4,7 @@ import com.LiQijun.model.Product;
 import com.LiQijun.model.User;
 
 import java.io.InputStream;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -83,7 +80,6 @@ public class ProductDao implements  IProductDao{
             product = new Product();
             product.setProductId(rs.getInt("ProductId"));
             product.setProductName(rs.getString("ProductName"));
-            product.setPicture(rs.getBinaryStream("picture"));
             product.setPrice(rs.getDouble("price"));
             product.setProductDescription(rs.getString("Description"));
             product.setCategoryId(rs.getInt("CategoryId"));
@@ -135,12 +131,12 @@ public class ProductDao implements  IProductDao{
             if(rs.next()){
                 product.setProductId(rs.getInt("ProductId"));
                 product.setProductName(rs.getString("ProductName"));
-                product.setPicture(rs.getBinaryStream("picture"));
                 product.setPrice(rs.getDouble("price"));
-                product.setProductDescription(rs.getString("Description"));
+                product.setProductDescription(rs.getString("ProductDescription"));
                 product.setCategoryId(rs.getInt("CategoryId"));
                 productList.add(product);
             }
+            System.out.println("product findAll successful!!");
             ps.close();
         }catch (SQLException throwables) {
             throwables.printStackTrace();
@@ -156,5 +152,17 @@ public class ProductDao implements  IProductDao{
     @Override
     public List<Product> getPicture(Integer productId, Connection con) throws SQLException {
         return null;
+    }
+    public byte[] getPictureById(Integer productId,Connection con)throws SQLException{
+        byte[] imgByte=null;
+        String sql="select picture from product where productId=?";
+        PreparedStatement pt =con.prepareStatement(sql);
+        pt.setInt(1,productId);
+        ResultSet rs=pt.executeQuery();
+        while (rs.next()) {
+            Blob blob=rs.getBlob("picture");
+            imgByte=blob.getBytes(1,(int)blob.length());
+        }
+        return imgByte;
     }
 }

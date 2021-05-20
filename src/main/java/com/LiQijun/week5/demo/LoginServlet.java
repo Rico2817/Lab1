@@ -89,9 +89,6 @@ public class LoginServlet extends HttpServlet {
             throwables.printStackTrace();
         }
 
-        String u = new String();
-        String p = new String();
-        PrintWriter print=response.getWriter();
         //find
         try {
             ResultSet rs=con.createStatement().executeQuery("select * from usertable where username ='"+username+"'and password ='"+password+"';");

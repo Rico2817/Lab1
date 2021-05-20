@@ -49,6 +49,8 @@ public class AddProductServlet extends HttpServlet {
             System.out.println("File name:"+filePart.getName()+"Size:"+filePart.getSize()+"File Type:"+filePart.getContentType());
             inputStream=filePart.getInputStream();
         }
+        //support@pubgsupport.zendesk.com
+        //support@pubgsupport.zendesk.com
         //set into model
         Product product=new Product();
         product.setProductName(productName);
